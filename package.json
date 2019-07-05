@@ -1,0 +1,20 @@
+{
+  "name": "testgen.js",
+  "version": "1.0.0",
+  "description": "An experimental project to automatically generate test cases for given JavaScript code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hakatashi/testgen.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hakatashi/testgen.js/issues"
+  },
+  "homepage": "https://github.com/hakatashi/testgen.js#readme"
+}
