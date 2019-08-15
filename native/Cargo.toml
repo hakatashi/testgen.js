@@ -15,3 +15,4 @@ neon-build = "0.3.3"
 
 [dependencies]
 neon = "0.3.3"
+mozjs = "0.10.1"
