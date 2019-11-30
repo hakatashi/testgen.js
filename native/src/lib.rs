@@ -24,8 +24,9 @@ fn hello(mut c: FunctionContext) -> JsResult<JsString> {
                                &CompartmentOptions::default())
         );
         rooted!(in(cx) let mut rval = UndefinedValue());
-        assert!(rt.evaluate_script(global.handle(), "1 + 1",
+        assert!(rt.evaluate_script(global.handle(), "'hello'+'world, it is '+new Date()",
                                    "test", 1, rval.handle_mut()).is_ok());
+        println!("{:?}", rval.to_string());
     }
     Ok(c.string("hello node"))
 }
@@ -33,4 +34,3 @@ fn hello(mut c: FunctionContext) -> JsResult<JsString> {
 register_module!(mut cx, {
     cx.export_function("hello", hello)
 });
-
