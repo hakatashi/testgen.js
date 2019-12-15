@@ -2,16 +2,17 @@
 (set-option :produce-models true)
 
 (define-sort FP () (_ FloatingPoint 11 53))
+(define-fun toFP ((n Real)) FP ((_ to_fp 11 53) RNE n))
 
-(define-fun one () FP (fp #b0 #b01111111111 #b0000000000000000000000000000000000000000000000000000))
-(define-fun maxSafeInteger () FP (fp #b0 #b10000110011 #b1111111111111111111111111111111111111111111111111111))
+(define-fun one () FP (toFP 1))
+(define-fun maxSafeInteger () FP (toFP 9007199254740991))
 
 (declare-const x FP)
 
 (assert (fp.isPositive x))
 (assert (fp.leq x maxSafeInteger))
 (assert (fp.eq (fp.roundToIntegral RNE x) x))
-(assert (distinct (fp.sub RNE (fp.add RNE one x) x) one))
+(assert (not (fp.eq (fp.sub RNE (fp.add RNE one x) x) one)))
 
 (check-sat)
 (get-model)
