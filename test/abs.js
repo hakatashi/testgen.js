@@ -7,3 +7,5 @@ const abs = (n) => {
 	}
 	return 0;
 };
+
+dissrc(abs);
