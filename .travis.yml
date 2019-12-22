@@ -1,0 +1,10 @@
+language: rust
+dist: bionic
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb https://deb.nodesource.com/node_12.x bionic main'
+        key_url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+    packages:
+      - nodejs
+script: node -e "require('./')"
