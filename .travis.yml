@@ -5,6 +5,6 @@ addons:
     packages:
       - autoconf2.13
 install:
-  - nvm install lts
+  - nvm install --lts
   - npm install
 script: node -e "require('./')"
