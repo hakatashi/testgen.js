@@ -1,5 +1,9 @@
 language: rust
 dist: bionic
+addons:
+  apt:
+    packages:
+      - autoconf2.13
 install:
   - nvm install lts
   - npm install
