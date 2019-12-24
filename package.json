@@ -10,7 +10,8 @@
   "author": "Koki Takahashi <hakatasiloving@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "neon-cli": "^0.3.3"
+    "neon-cli": "^0.3.3",
+    "tmp": "^0.1.0"
   },
   "scripts": {
     "install": "neon build"
