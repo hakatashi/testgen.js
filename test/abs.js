@@ -1,4 +1,4 @@
-const abs = (n) => {
+dissrc((n) => {
 	if (n > 0) {
 		return n;
 	}
@@ -6,6 +6,5 @@ const abs = (n) => {
 		return -n;
 	}
 	return 0;
-};
+});
 
-dissrc(abs);
