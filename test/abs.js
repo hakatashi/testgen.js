@@ -1,4 +1,6 @@
-dissrc((n) => {
+const {compileFunction} = require('../lib/utils.js');
+
+compileFunction((n) => {
 	if (n > 0) {
 		return n;
 	}
@@ -7,4 +9,3 @@ dissrc((n) => {
 	}
 	return 0;
 });
-
