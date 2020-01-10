@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "concat-stream": "^2.0.0",
+    "elparser": "0.0.9",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
     "neon-cli": "^0.3.3",
