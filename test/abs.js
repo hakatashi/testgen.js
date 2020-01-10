@@ -1,6 +1,6 @@
-const {compileFunction} = require('../lib/utils.js');
-const {constructGraph} = require('../lib/analyzer.js');
 const {inspect} = require('util');
+const {constructGraph} = require('../lib/analyzer.js');
+const {compileFunction} = require('../lib/utils.js');
 
 (async () => {
 	const codes = await compileFunction((n) => {
