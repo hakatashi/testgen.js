@@ -1,0 +1,7 @@
+{
+    "extends": "@hakatashi",
+    "rules": {
+        "no-console": "off",
+        "camelcase": "off"
+    }
+}
