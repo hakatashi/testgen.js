@@ -10,11 +10,11 @@
 (assert
   (and
     (fp.gt x (toFP 0))
-    (fp.eq (fp.roundToIntegral RNE x) x)
     (fp.leq x (toFP 3))
+    (fp.eq (fp.roundToIntegral RNE x) x)
     (fp.gt y (toFP 0))
-    (fp.eq (fp.roundToIntegral RNE y) y)
     (fp.leq y (toFP 3))
+    (fp.eq (fp.roundToIntegral RNE y) y)
     (not (fp.eq x y))
     (not
       (let ((z (fp.sub RNE (toFP 6) (fp.add RNE x y))))
