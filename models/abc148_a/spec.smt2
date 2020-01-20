@@ -17,10 +17,10 @@
     (fp.eq (fp.roundToIntegral RNE y) y)
     (not (fp.eq x y))
     (not
-      (let ((z (fp.sub RNE (toFP 6) (fp.add RNE x y))))
+      (let ((ans (fp.sub RNE (toFP 6) (fp.add RNE x y))))
         (and
-          (not (fp.eq z x))
-          (not (fp.eq z y)))))))
+          (not (fp.eq ans x))
+          (not (fp.eq ans y)))))))
 
 (check-sat)
 (get-model)
