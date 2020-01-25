@@ -19,6 +19,9 @@
     (not
       (let ((ans (fp.sub RNE (toFP 6) (fp.add RNE x y))))
         (and
+          (fp.gt ans (toFP 0))
+          (fp.leq ans (toFP 3))
+          (fp.eq (fp.roundToIntegral RNE ans) ans)
           (not (fp.eq ans x))
           (not (fp.eq ans y)))))))
 
