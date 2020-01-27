@@ -3,8 +3,8 @@ const fs = require('fs-extra');
 const {constructGraph, listPaths, analyzePath} = require('../lib/analyzer.js');
 const {decode} = require('../lib/sexp.js');
 const {solve} = require('../lib/solver.js');
-const {compileFunction} = require('../lib/utils.js');
-const solver1 = require('./abc148_a/solver1.js');
+const {compileFunction, fp2num} = require('../lib/utils.js');
+const solver1 = require('./abc148_a/solver2.js');
 
 (async () => {
 	console.log('===== CODE =====');
@@ -22,11 +22,27 @@ const solver1 = require('./abc148_a/solver1.js');
 
 	const spec = await fs.readFile(`${__dirname}/abc148_a/spec.smt2`);
 
+	const corners = [];
+
 	for (const path of paths) {
 		console.log('Solving for path', path, '...');
 
 		// place-in answer
-		const {conditions, ret} = analyzePath(path, codeBlocks);
+		const {conditions, ret} = (() => {
+			if (paths.length === 1) {
+				const num = parseInt(solver1.toString().match(/\d/)[0]);
+
+				return {
+					conditions: [],
+					ret: ['fp.sub', 'RNE', ['toFP', num], ['fp.add', 'RNE', 'x', 'y']],
+				};
+			}
+			const result = analyzePath(path, codeBlocks);
+			return {
+				conditions: result.conditions,
+				ret: ['toFP', result.ret],
+			};
+		})();
 		const specExp = decode(spec.toString());
 
 		const dfs = (node, depth = 0) => {
@@ -47,12 +63,29 @@ const solver1 = require('./abc148_a/solver1.js');
 			}
 
 			if (depth === 6 && node[0] === 'ans') {
-				node[1] = ['toFP', ret];
+				node[1] = ret;
 			}
 		};
 
 		dfs(specExp);
 
-		await solve(specExp);
+		const output = await solve(specExp);
+		const result = output.split('\n')[0];
+		console.log(result);
+
+		if (result === 'sat') {
+			const matches = Array.from(output.matchAll(/\(fp (.+?)\)/g));
+			corners.push({x: fp2num(matches[0][1]), y: fp2num(matches[1][1])});
+		}
+	}
+
+	console.log('\n\n===== RESULT ===');
+
+
+	if (corners.length === 0) {
+		console.log('No corner cases found :)');
+	} else {
+		console.log('Corner cases found!!!!! :(');
+		console.log(corners);
 	}
 })();
