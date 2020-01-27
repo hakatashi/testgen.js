@@ -7,23 +7,24 @@ const {compileFunction, fp2num} = require('../lib/utils.js');
 const solver1 = require('./abc148_a/solver1.js');
 
 (async () => {
-	console.log('===== CODE =====');
-	console.log(`${solver1.toString()}\n`);
+	console.log('\n\n===== CODE =====');
+	console.log(solver1.toString());
 
 	const codes = await compileFunction(solver1);
 	const codeBlocks = constructGraph(codes);
 
-	console.log('===== GRAPH ANALYSIS =====');
-	console.log(`${inspect(codeBlocks, {depth: null})}\n`);
+	console.log('\n\n===== GRAPH ANALYSIS =====');
+	console.log(inspect(codeBlocks, {depth: null}));
 
 	const paths = listPaths(codeBlocks);
-	console.log('===== VALID EXECUTION PATHS =====');
+	console.log('\n\n===== VALID EXECUTION PATHS =====');
 	console.log(paths);
 
 	const spec = await fs.readFile(`${__dirname}/abc148_a/spec.smt2`);
 
 	const corners = [];
 
+	console.log('\n\n===== EXECUTION PATHS ANALYSIS =====');
 	for (const path of paths) {
 		console.log('Solving for path', path, '...');
 
