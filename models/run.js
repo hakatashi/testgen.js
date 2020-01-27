@@ -4,7 +4,7 @@ const {constructGraph, listPaths, analyzePath} = require('../lib/analyzer.js');
 const {decode} = require('../lib/sexp.js');
 const {solve} = require('../lib/solver.js');
 const {compileFunction, fp2num} = require('../lib/utils.js');
-const solver1 = require('./abc148_a/solver2.js');
+const solver1 = require('./abc148_a/solver1.js');
 
 (async () => {
 	console.log('===== CODE =====');
