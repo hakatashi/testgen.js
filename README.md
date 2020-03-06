@@ -51,8 +51,14 @@ Follow the instruction in https://rustup.rs/ and install nightly.
 
 Node.js LTS is supported.
 
-## Installation
+### Install Dependencies
 
 ```
 npm install
+```
+
+## Run
+
+```
+node models/run.js
 ```
